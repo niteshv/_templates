@@ -1,0 +1,88 @@
+// helpers
+
+.maxwidth { 
+    @include maxwidth(); 
+}
+.hidden {
+    display: none !important;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+.col {
+    ol {
+        margin: 8px 0 8px 15px;
+        list-style-type: decimal;
+    }
+    ul {
+        margin: 8px 0 8px 15px;
+        list-style: disc;
+    }
+}
+blockquote {
+    font-size: 16px;
+    margin: 12px 0px 20px 0px;
+    padding: 13px 34px;
+    position: relative;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: $textcolor;
+    content: open-quote;
+    font-size: 46px;
+    position:absolute;
+    left:5px;
+    top: 0.6em;
+    line-height: 0.1em;
+}
+
+blockquote:after {
+    color: $textcolor;
+    content: close-quote;
+    font-size: 46px;
+    position:absolute;
+    right:3px;
+    bottom: 0em;
+    line-height: 0.1em;
+}  

@@ -1,0 +1,155 @@
+// setup vars
+
+// Google font
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+$textfont: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headingfont: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$textcolor: #000000;
+$headingcolor: #000000;
+
+$btnbackground: #000;
+$btntext: #fff;
+
+$linkcolor: #0367b2;
+
+@mixin maxwidth() {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+@mixin boxsizing() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+@mixin animate() {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition:    all .2s ease-in-out;
+    -ms-transition:     all .2s ease-in-out;
+    -o-transition:      all .2s ease-in-out;
+    transition:         all .2s ease-in-out;
+}
+@mixin animatespeed($speed) {
+    -webkit-transition: all $speed ease-in-out;
+    -moz-transition:    all $speed ease-in-out;
+    -ms-transition:     all $speed ease-in-out;
+    -o-transition:      all $speed ease-in-out;
+    transition:         all $speed ease-in-out;
+}
+@mixin rounded() {
+    -webkit-border-radius:  4px;
+    -moz-border-radius:     4px;
+    border-radius:          4px;
+}
+@mixin roundedpx($px) {
+    -webkit-border-radius:  $px;
+    -moz-border-radius:     $px;
+    border-radius:          $px;
+}
+@mixin rotate($amount) {
+  -webkit-transform: rotate($amount);
+      -ms-transform: rotate($amount);
+          transform: rotate($amount);
+}
+@mixin bg-highres($file, $type, $width, $height) {
+  background-image: url('../images/' + $file + '.' + $type);
+  background-repeat: no-repeat;
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx){
+    & {
+      background-image: url('../images/' + $file + '@2x.' + $type);
+      -webkit-background-size: $width $height;
+      -moz-background-size: $width $height;
+      -o-background-size: $width $height;
+      background-size: $width $height;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@mixin bg-svg($file, $type, $width, $height) {
+  background-image: url('../images/' + $file + '.' + $type);
+  background-repeat: no-repeat;
+  .svg &{
+    background-image: url('../images/' + $file + '.' + 'svg');
+    background-size: $width $height;
+  }
+}
+
+// Mixin for creating arrows, basic usage @include arrow(top-left, #000, 15px);
+// available directions: top, right, bottom, left, top-left, top-right, bottom-left, bottom-right
+
+@mixin arrow($direction, $color, $size, $size2){
+  height: 0;
+  width: 0;
+  content: '';
+
+  @if $direction == 'top' {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size2 solid $color;
+  } @else if $direction == 'right' {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if $direction == 'bottom' {
+    border-top: $size2 solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+  } @else if $direction == 'left' {
+    border-top: $size solid transparent;
+    border-right: $size solid $color;
+    border-bottom: $size solid transparent;
+  } @else if $direction == 'top-left' {
+    border-top: $size solid $color; 
+    border-right: $size solid transparent;  
+  } @else if $direction == 'top-right' {
+    border-top: $size solid $color; 
+    border-left: $size solid transparent;
+  } @else if $direction == 'bottom-left' {
+    border-bottom: $size solid $color; 
+    border-right: $size solid transparent;  
+  } @else if $direction == 'bottom-right' {
+    border-bottom: $size solid $color; 
+    border-left: $size solid transparent;
+  }
+}
+
+
+// media queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (max-width: 640px) {
+      @content;
+    }
+  }
+ 
+  @else if $breakpoint == "tablet" {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+ 
+  @else if $breakpoint == "desktop" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "hd" {
+    @media (max-width: 1921px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == "highres" {
+    @media (min-width: 1921px) {
+      @content;
+    }
+  }
+}

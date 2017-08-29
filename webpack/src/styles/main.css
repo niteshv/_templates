@@ -1,0 +1,15 @@
+
+/* main css file */
+@import 'components/_var.pcss';
+
+@import "vendor/normalize.pcss";
+
+@import "components/base.pcss";
+@import "components/animation.pcss";
+@import "components/header-footer.pcss";
+
+@import "components/helpers.pcss";
+
+@import "pages/home.pcss";
+
+@import 'components/print.pcss';

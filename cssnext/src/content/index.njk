@@ -1,0 +1,17 @@
+<!-- index.njk -->
+{% extends "layout.njk" %}
+
+{% block bodyClass %}pg-home{% endblock %}
+
+{% block pageTitle %}
+	Home
+{% endblock %}
+
+{% block navigation %}
+    {% import 'partials/nav.njk' as nav %}
+    {{nav.active('home')}}
+{% endblock %}
+
+{% block content %}
+	<h1>index page</h1>
+{% endblock %}

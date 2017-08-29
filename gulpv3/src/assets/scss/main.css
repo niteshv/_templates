@@ -1,0 +1,14 @@
+
+@import '_var.scss';
+
+@import "vendor/normalize.scss";
+
+@import "base.scss";
+@import "animation.scss";
+@import "header-footer.scss";
+
+@import "helpers.scss";
+
+@import "pages/home.scss";
+
+@import 'print.scss';

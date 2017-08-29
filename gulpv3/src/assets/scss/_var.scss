@@ -1,0 +1,80 @@
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+$textfont: "Roboto", Helvetica, Arial, sans-serif;
+$headingfont: "Roboto", Helvetica, Arial, sans-serif;
+
+$textcolor: #fff;
+$textcolorheading: #fff;
+$linkcolour: #5ec4dd;
+
+$blue: #5ec4dd;
+$grey: #999999;
+$grey2: #ccc;
+$black: #282828;
+
+$thumbwidth: 10;
+$thumbwidth2: 12;
+$thumbwidth3: 15;
+$thumbwidth4: 18;
+
+@define-mixin maxwidth() {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 50px;
+}
+@define-mixin bg-highres($file, $type, $width, $height) {
+  background-image: url('../img/dist/' + $file + '.' + $type);
+  background-repeat: no-repeat;
+  @media only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx){
+    & {
+      background-image: url('../img/' + $file + '@2x.' + $type);
+      background-size: $width $height;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@define-mixin bg-svg($file, $type, $width, $height) {
+  background-image: url('../img/' + $file + '.' + $type);
+  background-repeat: no-repeat;
+  .svg &{
+    background-image: url('../img/' + $file + '.' + 'svg');
+    background-size: $width $height;
+  }
+}
+
+
+@define-mixin respond $breakpoint  {
+  @if $breakpoint == mobile {
+    @media (max-width: 640px) {
+      @mixin-content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media (max-width: 800px) {
+      @mixin-content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media (max-width: 1200px) {
+      @mixin-content;
+    }
+  }
+
+  @if $breakpoint == hd {
+    @media (max-width: 1921px) {
+      @mixin-content;
+    }
+  }
+  @if $breakpoint == highres {
+    @media (min-width: 1921px) {
+      @mixin-content;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<!-- contact.njk -->
+{% extends "layout.njk" %}
+
+{% block bodyClass %}pg-notfound{% endblock %}
+
+{% block pageTitle %}
+	Not found 
+{% endblock %}
+
+{% block navigation %}
+    {% import 'partials/nav.njk' as nav %}
+    {{nav.active('notfound')}}
+{% endblock %}
+
+{% block content %}
+    <h1>Not found <span>:(</span></h1>
+    <p>Sorry, but the page you were trying to view does not exist.</p>
+    <p>It looks like this was the result of either:</p>
+    <p>
+        - a mistyped address <br />
+        - an out-of-date link
+    </p>
+    <p><a href="/">Go to home page</a></p>
+{% endblock %}

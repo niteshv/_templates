@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+:root {
+  --textfont: "Roboto", Helvetica, Arial, sans-serif;
+  --headingfont: "Roboto", Helvetica, Arial, sans-serif;
+
+  --pagebgcolor: #eee;
+
+  --textcolor: #1f1f1f;
+  --textcolorheading: #1f1f1f;
+  --linkcolour: #2f4156;
+
+  --black: #1f1f1f;
+  --blue: #2f4156;
+  --green: #29d79c;
+
+
+  /* Base, make bigger to make font size smaller */
+  --rem-base: 17;
+
+  --rem-5px: calc( 1 / var(--rem-base) * 5rem );
+  --rem-10px: calc( 1 / var(--rem-base) * 10rem );
+  --rem-11px: calc( 1 / var(--rem-base) * 11rem );
+  --rem-12px: calc( 1 / var(--rem-base) * 12rem );
+  --rem-13px: calc( 1 / var(--rem-base) * 13rem );
+  --rem-14px: calc( 1 / var(--rem-base) * 14rem );
+  --rem-15px: calc( 1 / var(--rem-base) * 15rem );
+  --rem-16px: calc( 1 / var(--rem-base) * 16rem );
+  --rem-17px: calc( 1 / var(--rem-base) * 17rem );
+  --rem-18px: calc( 1 / var(--rem-base) * 18rem );
+  --rem-19px: calc( 1 / var(--rem-base) * 19rem );
+  --rem-20px: calc( 1 / var(--rem-base) * 20rem );
+  --rem-21px: calc( 1 / var(--rem-base) * 21rem );
+  --rem-22px: calc( 1 / var(--rem-base) * 22rem );
+  --rem-24px: calc( 1 / var(--rem-base) * 24rem );
+  --rem-28px: calc( 1 / var(--rem-base) * 28rem );
+  --rem-30px: calc( 1 / var(--rem-base) * 30rem );
+  --rem-40px: calc( 1 / var(--rem-base) * 40rem );
+  --rem-44px: calc( 1 / var(--rem-base) * 44rem );
+  --rem-50px: calc( 1 / var(--rem-base) * 50rem );
+  --rem-60px: calc( 1 / var(--rem-base) * 60rem );
+  --rem-70px: calc( 1 / var(--rem-base) * 60rem );
+
+  /* Width of large columns in grid */
+  --col-width: 150px;
+  /* Width of gutter in grid */  
+  --gutter: 30px;
+  /* Total large columns*/
+  --columns: 8;
+  /* Calculate total max width based on above */
+  --maxwidth: calc( 
+      ( var(--col-width) * var(--columns) ) 
+      + 
+      ( var(--gutter) * calc( var(--columns)+1 ) ) 
+    );
+  /* Used for margins and spacing using 30px responsive as rems */
+  --spacing: var(--rem-30px);
+  
+}
+
+@custom-media --viewport-mobile-small (max-width: 500px);
+@custom-media --viewport-mobile-min   (min-width: 640px);
+@custom-media --viewport-mobile       (max-width: 640px);
+@custom-media --viewport-tablet-min   (min-width: 900px);
+@custom-media --viewport-tablet       (max-width: 900px);
+@custom-media --viewport-desktop-min  (min-width: 1400px);
+@custom-media --viewport-desktop      (max-width: 1400px);
+@custom-media --viewport-hd           (max-width: 1921px);
+@custom-media --viewport-highres      (min-width: 1921px);
+

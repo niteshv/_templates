@@ -1,0 +1,29 @@
+section.slider {
+    &.section {
+        display: block;
+    }
+
+    & > .c6 {
+        width: 75%;
+    }
+
+    & .slider {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s ease;
+        &.slick-initialized {
+            visibility: visible;
+            opacity: 1;    
+        }
+    }
+
+    & .slider-count {
+        
+    }
+
+    & .slider-progress {
+        width: 0;
+        height: var(--spacing);
+        background-color: grey;
+    }
+}

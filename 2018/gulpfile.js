@@ -7,12 +7,17 @@ var rename =        require('gulp-rename');
 var uglify =        require('gulp-uglify');
 var browserSync =   require('browser-sync').create();
 var plumber =       require('gulp-plumber');
+var stylelint =     require("stylelint");
 
 gulp.task('default', ['watch']);
 
 gulp.task('styles', function () {
   var plugins = [
-    require("postcss-import")(),
+    require("postcss-import")({
+      plugins: [
+        require("stylelint")({ /* your options */ })
+      ]
+    }),
     require("postcss-import-url")(),
     require("rucksack-css")({
         fallbacks: false
@@ -32,7 +37,7 @@ gulp.task('styles', function () {
     require("postcss-reporter")()
   ];	
   return gulp.src('./src/assets/css/main.css')
-  .pipe(plumber())  
+  // .pipe(plumber())  
   .pipe(sourcemaps.init())
   .pipe(postcss(plugins))
   .pipe(sourcemaps.write('.'))
@@ -55,15 +60,16 @@ gulp.task('compimgs', () => {
 gulp.task('scripts', function() {
     return gulp.src([
         /* Add your JS files here, they will be combined in this order */
-        './src/assets/js/vendor/slick.js',
+        './src/assets/scripts/vendor/slick.js',
         // './src/assets/js/plugins.js',
-        './src/assets/js/main.js'
+        './src/assets/scripts/main.js'
     ])
+    .pipe(plumber())  
     .pipe(concat('all.js'))
-    .pipe(gulp.dest('./dist/assets/js'))
+    .pipe(gulp.dest('./dist/assets/scripts'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/assets/js'));
+    .pipe(gulp.dest('./dist/assets/scripts'));
 
 });
 
@@ -78,6 +84,6 @@ gulp.task('browserSync', function() {
 
 gulp.task('watch', ['browserSync', 'styles', 'scripts', 'compimgs'], function (){
     gulp.watch('./src/assets/css/**/*.*', ['styles']);
-    gulp.watch('./src/assets/js/*.js', ['scripts']);
+    gulp.watch('./src/assets/scripts/*.js', ['scripts']);
     gulp.watch('./src/assets/img/**/*.*', ['compimgs']);
 });

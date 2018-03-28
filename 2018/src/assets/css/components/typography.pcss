@@ -6,13 +6,13 @@ html, button, input, select, textarea {
 h1, h2, h3, h4, h5, h6 { 
     color: var(--textcolorheading); 
     font-family: var(--headingfont); 
-    line-height: calc(32/24);
+    line-height: calc(32 / 24);
     font-weight: normal;
 }
 html {
     line-height: 1.4;
     font-size: responsive 12px 20px;
-    font-range: 420px 1800px;    
+    font-range: 420px 1800px;   /* stylelint-disable-line */
 }
 body {
     font-family: var(--textfont);
@@ -26,14 +26,14 @@ a {
 
 h1, .h1 {
     font-size: var(--rem-60px);
-    line-height: calc(46/40);
+    line-height: calc(46 / 40);
     @media (--viewport-mobile) {
         font-size: var(--rem-40px);
     }
 }
 h2, .h2 {
     font-size: var(--rem-40px);
-    line-height: calc(46/40);
+    line-height: calc(46 / 40);
     @media (--viewport-mobile) {
         font-size: var(--rem-30px);
     }
@@ -53,10 +53,10 @@ h5, .h5, h6, {
 
 p {
     font-size: var(--rem-16px);
-    line-height: calc(24/16);
+    line-height: calc(24 / 16);
     &.big {
         font-size: var(--rem-24px);
-        line-height: calc(32/24);
+        line-height: calc(32 / 24);
     }
     &.bigger {
         font-size: var(--rem-16px);
@@ -93,13 +93,6 @@ blockquote {
 .button {
     font-size: var(--rem-24px);
     font-weight: bold;
-    line-height: calc(32/24);
+    line-height: calc(32 / 24);
 }
 
-#header {
-
-}
-
-#footer {
-
-}

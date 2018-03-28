@@ -40,6 +40,7 @@
   --rem-50px: calc( 1 / var(--rem-base) * 50rem );
   --rem-60px: calc( 1 / var(--rem-base) * 60rem );
   --rem-70px: calc( 1 / var(--rem-base) * 60rem );
+  --rem-100px: calc( 1 / var(--rem-base) * 100rem );
 
   /* Width of large columns in grid */
   --col-width: 150px;
@@ -49,9 +50,7 @@
   --columns: 8;
   /* Calculate total max width based on above */
   --maxwidth: calc( 
-      ( var(--col-width) * var(--columns) ) 
-      + 
-      ( var(--gutter) * calc( var(--columns)+1 ) ) 
+      ( var(--col-width) * var(--columns) ) + ( var(--gutter) * calc( var(--columns) + 1 ) ) 
     );
   /* Used for margins and spacing using 30px responsive as rems */
   --spacing: var(--rem-30px);
@@ -67,4 +66,3 @@
 @custom-media --viewport-desktop      (max-width: 1400px);
 @custom-media --viewport-hd           (max-width: 1921px);
 @custom-media --viewport-highres      (min-width: 1921px);
-

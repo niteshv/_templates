@@ -1,3 +1,9 @@
+.button-group {
+    & a {
+        margin: calc(var(--spacing) / 2) calc(var(--spacing) / 2) calc(var(--spacing) / 2) calc(var(--spacing) / 2);
+    }
+}
+
 .button-group a,
 .button {
     display: inline-block;
@@ -8,33 +14,10 @@
     text-align: center;
     box-shadow: none;
     border: none;
-    @media (--viewport-tablet-min) {
-        min-width: calc( var(--col-width)*1.5 );
-    }
-    @media (--viewport-desktop-min) {
-        min-width: calc( var(--col-width)*2 );
-    }
     &:hover,
     &:focus {
         background-color: var(--blue);
         color: #fff;
     }
-    &.blue {
-        background-color: var(--blue);
-        color: #fff;
-        &:hover,
-        &:focus {
-            background-color: #fff;
-            color: var(--blue);
-        }
-    }
-    &.green {
-        background-color: var(--green);;
-    }
 }
 
-.button-group {
-    & a {
-        margin: calc(var(--spacing)/2) calc(var(--spacing)/2) calc(var(--spacing)/2) calc(var(--spacing)/2);
-    }
-}

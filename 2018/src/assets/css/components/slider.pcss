@@ -15,15 +15,85 @@ section.slider {
             visibility: visible;
             opacity: 1;    
         }
+        & .slick-slide {
+            @media (--viewport-mobile-min) {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        & .slick-arrow {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-image: url(gfx/icon-chevron-up.svg);      
+            background-size: contain;
+            transform-origin: center;
+            width: var(--rem-60px);
+            height: var(--rem-60px);
+            &.slick-next {
+                transform: rotate(90deg) translateX(-50%);
+                right: calc(var(--rem-100px) * -1);
+                @media (--viewport-mobile) {
+                    right: calc(var(--rem-60px) * -1);
+                }
+            }
+            &.slick-prev {
+                transform: rotate(-90deg) translateX(50%);
+                left: calc(var(--rem-100px) * -1);
+                @media (--viewport-mobile) {
+                    left: calc(var(--rem-60px) * -1);
+                }
+            }
+            &:hover,
+            &:focus {
+                background-image: url(gfx/icon-chevron-up-g.svg);
+            }
+        }
+
+        & .w50 {
+            &:not(.bg-grey) {
+                & a,
+                & div.video,
+                & iframe {
+                    display: block;
+                    height: 100%;
+                    padding: 0;
+                }
+            }
+            & img {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                max-width: 100%;
+            }
+            &.bg-grey {
+                padding: var(--spacing);
+                & h2 {
+                    margin-top: 0;
+                }
+                & .button {
+                    margin-top: var(--spacing);
+                }
+            }
+        }
     }
 
     & .slider-count {
-        
+        text-align: center;
+        padding: var(--rem-10px);
     }
 
+    & .slider-progress-wrapper {
+        background-color: var(--pagebgcolor);
+    }
     & .slider-progress {
         width: 0;
-        height: var(--spacing);
-        background-color: grey;
+        transition: width .2s ease-out;
+        height: 2px;
+        background-color: var(--blue);
     }
+}
+
+.slick-dotted.slick-slider {
+    margin-bottom: 0;
 }

@@ -22,11 +22,7 @@ gulp.task('styles', function () {
     require("rucksack-css")({
         fallbacks: false
     }),
-    require("postcss-cssnext")({
-        features: {
-            rem: false
-        }
-    }),
+    require("postcss-preset-env")(),
     require('cssnano')({ 
       autoprefixer: false,
       discardComments: {

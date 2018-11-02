@@ -10,17 +10,20 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-postcss": "^7.0.1",
-    "gulp-rename": "^1.3.0",
-    "gulp-sass": "^4.0.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
-    "postcss-reporter": "^5.0.0",
-    "postcss-scss": "^1.0.5",
-    "spectre.css": "^0.5.2",
-    "stylelint": "^9.3.0",
+    "gulp-uglify": "^3.0.1",
+    "postcss-reporter": "^6.0.0",
+    "postcss-scss": "^2.0.0",
+    "spectre.css": "^0.5.3",
+    "stylelint": "^9.7.1",
     "stylelint-config-recommended-scss": "^3.2.0",
-    "stylelint-scss": "^3.1.3"
+    "stylelint-scss": "^3.3.2"
   }
 }

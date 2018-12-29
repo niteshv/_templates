@@ -11,17 +11,30 @@ var cleanCSS        = require("gulp-clean-css");
 var plumber         = require('gulp-plumber');
 var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
+var imagemin        = require('gulp-imagemin');
+var fileinclude     = require('gulp-file-include');
 
 var paths = {
     css: {
-        src: './src/components/main.scss',
-        scss: './src/components/**/*.scss',
+        src:  './src/styles.scss',
+        scss: './src/**/*.scss',
         dest: './dist/assets/css'
     },
     js: {
-        src: './src/scripts',
-        dest: './dist/assets/scripts'
-    }
+        entry: './src/app.js',
+        src:    './src/**/*.js',
+        dest:  './dist/assets/scripts'
+    },
+    img: {
+        folder: './src/img',
+        src:    './src/img/**/*',
+        dest:   './dist/assets/img'
+    },
+    html: {
+        entry: './src/index.html',
+        src:    './src/**/*.html',
+        dest:  './dist'
+    },
 };
 
 gulp.task("scss-lint", function() {
@@ -40,23 +53,26 @@ gulp.task("scss-lint", function() {
     .pipe(postcss(processors, {syntax: syntax_scss}));
 });
 
-
 gulp.task('scripts', function() {
-    return gulp.src([
-        /* Add your JS files here, they will be combined in this order */
-        // './src/assets/scripts/vendor/slick.js',
-        // './src/assets/js/plugins.js',
-        './src/scripts/main.js'
-    ])
-    .pipe(plumber())  
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest(paths.js.dest))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.js.dest));
-
+    return gulp.src(paths.js.entry)
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest(paths.js.dest))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.js.dest));
 });
 
+gulp.task('html', function() {
+    return gulp.src(paths.html.entry)
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: './src/components/'
+        }))
+        .pipe(gulp.dest(paths.html.dest));
+});
 
 gulp.task('styles', function () {
     return gulp.src(paths.css.src)
@@ -78,10 +94,19 @@ gulp.task('styles', function () {
         .pipe(gulp.dest(paths.css.dest));
 });
 
+gulp.task('imgs', function () {
+    return gulp.src(paths.img.src,  {base: paths.img.folder})
+        .pipe(imagemin({
+            progressive: true     
+        }))
+        .pipe(gulp.dest(paths.img.dest));
+});
 
 gulp.task('watch', function () {
     gulp.watch(paths.css.scss, gulp.series('styles','scss-lint'));
     gulp.watch(paths.js.src, gulp.series('scripts'));
+    gulp.watch(paths.html.src, gulp.series('html'));
+    gulp.watch(paths.img.src, gulp.series('imgs'));
   });
 
 

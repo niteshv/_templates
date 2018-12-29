@@ -11,9 +11,11 @@
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
-    "gulp-clean-css": "^3.10.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.2.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
@@ -21,9 +23,9 @@
     "gulp-uglify": "^3.0.1",
     "postcss-reporter": "^6.0.0",
     "postcss-scss": "^2.0.0",
-    "spectre.css": "^0.5.3",
-    "stylelint": "^9.7.1",
+    "spectre.css": "^0.5.8",
+    "stylelint": "^9.9.0",
     "stylelint-config-recommended-scss": "^3.2.0",
-    "stylelint-scss": "^3.3.2"
+    "stylelint-scss": "^3.4.4"
   }
 }

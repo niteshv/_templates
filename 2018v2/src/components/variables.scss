@@ -52,7 +52,7 @@
 // $unit-2: .4rem;
 // $unit-3: .6rem;
 // $unit-4: .8rem;
-// $unit-5: 1rem;
+$unit-5: 1rem;
 // $unit-6: 1.2rem;
 // $unit-7: 1.4rem;
 // $unit-8: 1.6rem;
@@ -60,6 +60,10 @@
 // $unit-10: 2rem;
 // $unit-12: 2.4rem;
 // $unit-16: 3.2rem;
+
+$spacer-small: calc(#{$unit-5} * .8);
+$spacer: $unit-5;
+$spacer-big: calc(#{$unit-5} * 1.2);
 
 // // Font sizes
 // $html-font-size: 20px;

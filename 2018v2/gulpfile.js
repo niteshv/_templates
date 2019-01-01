@@ -13,6 +13,7 @@ var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
 var imagemin        = require('gulp-imagemin');
 var fileinclude     = require('gulp-file-include');
+var browserSync     = require('browser-sync').create();
 
 var paths = {
     css: {
@@ -71,7 +72,8 @@ gulp.task('html', function() {
             prefix: '@@',
             basepath: './src/components/'
         }))
-        .pipe(gulp.dest(paths.html.dest));
+        .pipe(gulp.dest(paths.html.dest))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('styles', function () {
@@ -91,7 +93,8 @@ gulp.task('styles', function () {
             suffix: '.min'
         }))
         .pipe(autoprefixer())
-        .pipe(gulp.dest(paths.css.dest));
+        .pipe(gulp.dest(paths.css.dest))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('imgs', function () {
@@ -109,8 +112,14 @@ gulp.task('watch', function () {
     gulp.watch(paths.img.src, gulp.series('imgs'));
   });
 
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/"
+        }
+    });
+});
 
 // Default task
-gulp.task('default', gulp.series('styles', 
-gulp.parallel('watch')
-));
+gulp.task('default', gulp.series('styles', gulp.parallel('watch','browser-sync')));

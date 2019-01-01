@@ -12,6 +12,8 @@ var plumber         = require('gulp-plumber');
 var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
 var imagemin        = require('gulp-imagemin');
+var webp            = require("imagemin-webp");
+var extReplace      = require("gulp-ext-replace");
 var fileinclude     = require('gulp-file-include');
 var browserSync     = require('browser-sync').create();
 
@@ -102,6 +104,13 @@ gulp.task('imgs', function () {
         .pipe(imagemin({
             progressive: true     
         }))
+        .pipe(gulp.dest(paths.img.dest))
+        .pipe(imagemin([
+            webp({
+                quality: 75
+            })
+        ]))
+        .pipe(extReplace(".webp"))
         .pipe(gulp.dest(paths.img.dest));
 });
 

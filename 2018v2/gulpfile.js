@@ -7,7 +7,6 @@ var postcss         = require('gulp-postcss');
 var reporter        = require('postcss-reporter');
 var syntax_scss     = require('postcss-scss');
 var stylelint       = require("stylelint");
-var cleanCSS        = require("gulp-clean-css");
 var plumber         = require('gulp-plumber');
 var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
@@ -21,12 +20,14 @@ var paths = {
     css: {
         src:  './src/styles.scss',
         scss: './src/**/*.scss',
-        dest: './dist/assets/css'
+        dest: './dist/assets/css',
+        sync: './dist/assets/css/*.css'
     },
     js: {
         entry: './src/app.js',
         src:    './src/**/*.js',
-        dest:  './dist/assets/scripts'
+        dest:  './dist/assets/scripts',
+        sync:  './dist/assets/scripts/*.js'
     },
     img: {
         folder: './src/img',
@@ -36,9 +37,25 @@ var paths = {
     html: {
         entry: './src/index.html',
         src:    './src/**/*.html',
-        dest:  './dist'
+        dest:  './dist',
+        sync:  './dist/*.html'
     },
 };
+
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/"
+        },
+        files: [
+            paths.css.sync,
+            paths.js.sync,
+            paths.html.sync
+        ],
+        notify: false
+    });
+});
 
 gulp.task("scss-lint", function() {
     var processors = [
@@ -74,11 +91,19 @@ gulp.task('html', function() {
             prefix: '@@',
             basepath: './src/components/'
         }))
-        .pipe(gulp.dest(paths.html.dest))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest(paths.html.dest));
 });
 
 gulp.task('styles', function () {
+    var plugins = [
+        require('cssnano')({ 
+            autoprefixer: false,
+            discardComments: {
+                removeAll: true
+            }
+        }),
+        require("postcss-reporter")()
+    ]; 
     return gulp.src(paths.css.src)
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'normal', precision: 10})
@@ -90,13 +115,12 @@ gulp.task('styles', function () {
         .pipe(sass({outputStyle: 'compressed', precision: 10})
             .on('error', sass.logError)
         )
-        .pipe(cleanCSS())
+        .pipe(postcss(plugins))
         .pipe(rename({
             suffix: '.min'
         }))
         .pipe(autoprefixer())
-        .pipe(gulp.dest(paths.css.dest))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest(paths.css.dest));
 });
 
 gulp.task('imgs', function () {
@@ -119,15 +143,6 @@ gulp.task('watch', function () {
     gulp.watch(paths.js.src, gulp.series('scripts'));
     gulp.watch(paths.html.src, gulp.series('html'));
     gulp.watch(paths.img.src, gulp.series('imgs'));
-  });
-
-// Static server
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./dist/"
-        }
-    });
 });
 
 // Default task

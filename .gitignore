@@ -6,7 +6,4 @@ yarn-debug.log*
 yarn-error.log*
 
 
-/node_modules
-/2018/node_modules
-
-/gulp/node_modules/
+node_modules/

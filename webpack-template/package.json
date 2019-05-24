@@ -41,5 +41,7 @@
     "webpack-dev-server": "^3.4.1",
     "webpack-pwa-manifest": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "flickity": "^2.2.0"
+  }
 }

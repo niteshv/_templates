@@ -10,7 +10,7 @@
 
 ## Usage
 
-'npm run start'
+'npm run build'
 
 ### Notes
 

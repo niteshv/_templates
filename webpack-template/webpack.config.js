@@ -115,13 +115,15 @@ module.exports = (env) => {
                 short_name: 'MyPWA',
                 description: 'My awesome Progressive Web App!',
                 background_color: '#ffffff',
+                theme_color: '#3367D6',
                 crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
                 includeDirectory: false,
+                fingerprints: false,
                 publicPath: '/',
                 icons: [
                     {
                         src: path.resolve('src/img/icons/site-icon.png'),
-                        sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+                        sizes: [192, 512]
                     }
                 ]
             })

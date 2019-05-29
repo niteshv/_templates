@@ -81,11 +81,19 @@ module.exports = (env) => {
             ]
         },
         plugins: [
+            // Delete all files in dist \/
             new CleanWebpackPlugin(),
+            // Css file for site \/
             new MiniCssExtractPlugin({
                 filename: "assets/[name].css"
             }),
             new StyleLintPlugin(),
+            new ImageminPlugin({
+                pngquant: {
+                    quality: '95-100'
+                }
+            }),
+            // Copy files for site root and images \/
             new CopyWebpackPlugin([
                 {
                     from: path.resolve(__dirname, 'src/img'),
@@ -96,15 +104,12 @@ module.exports = (env) => {
                     to: path.resolve(__dirname, 'dist')
                 }
             ]),
-            new ImageminPlugin({
-                pngquant: {
-                    quality: '95-100'
-                }
-            }),
+            // HTML Template file \/
             new HtmlWebPackPlugin({
                 template: path.resolve(__dirname, 'src/index.html'),
                 filename: path.resolve(__dirname, 'dist/index.html')
             }),
+            // Progressive Web App creation of assets and manifest \/
             new WebpackPwaManifest({
                 name: 'My Progressive Web App',
                 short_name: 'MyPWA',

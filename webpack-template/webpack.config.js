@@ -5,7 +5,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -74,7 +74,8 @@ module.exports = (env) => {
                     use: {
                         loader: 'html-loader',
                         options: {
-                            interpolate: true
+                            interpolate: true,
+                            attrs: false
                         }
                     }
                 }
@@ -88,11 +89,6 @@ module.exports = (env) => {
                 filename: "assets/[name].css"
             }),
             new StyleLintPlugin(),
-            new ImageminPlugin({
-                pngquant: {
-                    quality: '95-100'
-                }
-            }),
             // Copy files for site root and images \/
             new CopyWebpackPlugin([
                 {
@@ -104,8 +100,12 @@ module.exports = (env) => {
                     to: path.resolve(__dirname, 'dist')
                 }
             ]),
+            // Compress images
+            new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
             // HTML Template file \/
             new HtmlWebPackPlugin({
+                hash: false,
+                templateParameters: true,
                 template: path.resolve(__dirname, 'src/index.html'),
                 filename: path.resolve(__dirname, 'dist/index.html')
             }),

@@ -3,6 +3,7 @@
 ## Technology
 
 - Webpack
+- Pug
 
 ## Installation
 

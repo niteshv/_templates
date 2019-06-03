@@ -16,7 +16,7 @@ module.exports = (env) => {
         output: {
             path: path.join(__dirname, 'dist'),
             filename: 'assets/bundle.js',
-            publicPath: '/dist/'
+            publicPath: '/dist'
         },
         module: {
             rules: [
@@ -134,7 +134,8 @@ module.exports = (env) => {
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
-            contentBase: path.join(__dirname, 'dist'),
+            contentBase: path.join(__dirname, './dist'),
+            openPage: path.join(__dirname, './dist'),
             watchContentBase: true
         }
     };

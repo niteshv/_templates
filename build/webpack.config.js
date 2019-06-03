@@ -50,7 +50,11 @@ module.exports = (env) => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                sourceMap: true
+                                sourceMap: true,
+                                data: '@import "./src/components/variables";',
+                                includePaths: [
+                                    path.join(__dirname, 'src')
+                                ]
                             }
                         }
                     ]

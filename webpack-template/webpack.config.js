@@ -70,6 +70,10 @@ module.exports = (env) => {
                     use: "file-loader",
                 },
                 {
+                    test: /\.pug$/,
+                    loader: 'pug-loader' 
+                },
+                {
                     test: /\.(html)$/,
                     use: {
                         loader: 'html-loader',
@@ -106,7 +110,7 @@ module.exports = (env) => {
             new HtmlWebPackPlugin({
                 hash: false,
                 templateParameters: true,
-                template: path.resolve(__dirname, 'src/index.html'),
+                template: path.resolve(__dirname, 'src/index.pug'),
                 filename: path.resolve(__dirname, 'dist/index.html')
             }),
             // Progressive Web App creation of assets and manifest \/

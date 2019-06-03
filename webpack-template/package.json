@@ -42,6 +42,8 @@
     "webpack-pwa-manifest": "^4.0.0"
   },
   "dependencies": {
-    "flickity": "^2.2.0"
+    "flickity": "^2.2.0",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0"
   }
 }

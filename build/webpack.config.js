@@ -74,7 +74,10 @@ module.exports = (env) => {
                 },
                 {
                     test: /\.pug$/,
-                    loader: 'pug-loader' 
+                    loader: 'pug-loader',
+                    query: {
+                        pretty: true
+                    }
                 },
                 {
                     test: /\.(html)$/,

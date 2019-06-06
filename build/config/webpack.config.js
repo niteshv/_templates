@@ -6,16 +6,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const setup = require('./setup.config');
 
 module.exports = (env) => {
     const isProduction = env === 'production';
 
     return {
         mode: isProduction ? 'production' : 'development',
-        entry: './src/index.js',
+        entry: setup.paths.entry,
         output: {
-            path: path.resolve(__dirname, '../dist'),
-            filename: 'assets/bundle.js'
+            path: path.resolve(__dirname, setup.paths.dist),
+            filename: setup.paths.fileName
         },
         module: {
             rules: [
@@ -51,9 +52,9 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
-                                data: '@import "./../src/components/variables";',
+                                data: setup.paths.cssVariables,
                                 includePaths: [
-                                    path.join(__dirname, '../src')
+                                    path.join(__dirname, setup.paths.src)
                                 ]
                             }
                         }
@@ -104,12 +105,12 @@ module.exports = (env) => {
             // Copy files for site root and images \/
             new CopyWebpackPlugin([
                 {
-                    from: path.resolve(__dirname, './../src/img'),
-                    to: path.resolve(__dirname, './../dist/assets/img')
+                    from: path.resolve(__dirname, setup.paths.imagesSrc ),
+                    to: path.resolve(__dirname, setup.paths.imagesDist )
                 },
                 {
-                    from: path.resolve(__dirname, './../src/rootfiles'),
-                    to: path.resolve(__dirname, './../dist')
+                    from: path.resolve(__dirname, setup.paths.rootFilesSrc ),
+                    to: path.resolve(__dirname, setup.paths.rootFilesDist )
                 }
             ]),
             // Compress images
@@ -118,23 +119,23 @@ module.exports = (env) => {
             new HtmlWebPackPlugin({
                 hash: false,
                 templateParameters: true,
-                template: path.resolve(__dirname, './../src/pages/index.pug'),
-                filename: path.resolve(__dirname, './../dist/index.html')
+                template: path.resolve(__dirname, setup.pages.pagesSrc+setup.pages.page1+'.pug'),
+                filename: path.resolve(__dirname, setup.pages.pagesDist+setup.pages.page1+'.html')
             }),
             // Progressive Web App creation of assets and manifest \/
             new WebpackPwaManifest({
-                name: 'My Progressive Web App',
-                short_name: 'MyPWA',
-                description: 'My awesome Progressive Web App!',
-                background_color: '#ffffff',
-                theme_color: '#3367D6',
+                name: setup.siteDetails.siteName,
+                short_name: setup.siteDetails.siteNameShort,
+                description: setup.siteDetails.siteDescription,
+                background_color: setup.siteDetails.siteBackgroundColor,
+                theme_color: setup.siteDetails.siteThemeColor,
                 crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
                 includeDirectory: false,
                 fingerprints: false,
                 publicPath: '/',
                 icons: [
                     {
-                        src: path.resolve('./src/img/icons/site-icon.png'),
+                        src: path.resolve(setup.siteDetails.siteIconSrc),
                         sizes: [192, 512]
                     }
                 ]
@@ -142,8 +143,8 @@ module.exports = (env) => {
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
-            contentBase: path.resolve(__dirname, '../dist'),
-            openPage: path.resolve(__dirname, '../dist'),
+            contentBase: path.resolve(__dirname, setup.paths.dist),
+            openPage: path.resolve(__dirname, setup.paths.dist),
             watchContentBase: true
         }
     };

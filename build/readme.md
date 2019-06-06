@@ -2,7 +2,8 @@
 
 ## Technology
 
-- Webpack
+- Webpack 4
+- Scss
 - Pug
 
 ## Installation
@@ -11,7 +12,13 @@
 
 ## Usage
 
+### Build files
+
 'npm run build'
+
+### Start Development
+
+'npm run start'
 
 ## Notes
 
@@ -19,19 +26,9 @@
 
 ## Minimum infomation to build
 
-### webpack.config.js
+### config/setup.config.js
 
-- name: 'My Progressive Web App',
-- short_name: 'MyPWA',
-- description: 'My awesome Progressive Web App!',
-- background_color: '#ffffff',
-- theme_color: '#3367D6',
-
-### index.html
-
-- meta theme-color (should be the same as above)
-- tracking
-- title & description
+- Webpack paths, setup, pages and PWA are here
 
 ### icons
 

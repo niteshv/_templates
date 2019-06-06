@@ -14,7 +14,7 @@ module.exports = (env) => {
         mode: isProduction ? 'production' : 'development',
         entry: './src/index.js',
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(__dirname, '../dist'),
             filename: 'assets/bundle.js'
         },
         module: {
@@ -43,7 +43,7 @@ module.exports = (env) => {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                config: { path: 'postcss.config.js' },
+                                config: { path: './config/postcss.config.js' },
                                 sourceMap: true
                             }
                         },
@@ -51,9 +51,9 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
-                                data: '@import "./src/components/variables";',
+                                data: '@import "./../src/components/variables";',
                                 includePaths: [
-                                    path.join(__dirname, 'src')
+                                    path.join(__dirname, '../src')
                                 ]
                             }
                         }
@@ -98,16 +98,18 @@ module.exports = (env) => {
             new MiniCssExtractPlugin({
                 filename: "assets/[name].css"
             }),
-            new StyleLintPlugin(),
+            new StyleLintPlugin({
+                configFile: path.resolve(__dirname, './../config/stylelint.config.js')
+            }),
             // Copy files for site root and images \/
             new CopyWebpackPlugin([
                 {
-                    from: path.resolve(__dirname, 'src/img'),
-                    to: path.resolve(__dirname, 'dist/assets/img')
+                    from: path.resolve(__dirname, './../src/img'),
+                    to: path.resolve(__dirname, './../dist/assets/img')
                 },
                 {
-                    from: path.resolve(__dirname, 'src/rootfiles'),
-                    to: path.resolve(__dirname, 'dist')
+                    from: path.resolve(__dirname, './../src/rootfiles'),
+                    to: path.resolve(__dirname, './../dist')
                 }
             ]),
             // Compress images
@@ -116,8 +118,8 @@ module.exports = (env) => {
             new HtmlWebPackPlugin({
                 hash: false,
                 templateParameters: true,
-                template: path.resolve(__dirname, 'src/index.pug'),
-                filename: path.resolve(__dirname, 'dist/index.html')
+                template: path.resolve(__dirname, './../src/pages/index.pug'),
+                filename: path.resolve(__dirname, './../dist/index.html')
             }),
             // Progressive Web App creation of assets and manifest \/
             new WebpackPwaManifest({
@@ -132,7 +134,7 @@ module.exports = (env) => {
                 publicPath: '/',
                 icons: [
                     {
-                        src: path.resolve('src/img/icons/site-icon.png'),
+                        src: path.resolve('./src/img/icons/site-icon.png'),
                         sizes: [192, 512]
                     }
                 ]
@@ -140,8 +142,8 @@ module.exports = (env) => {
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
-            contentBase: path.resolve(__dirname, 'dist'),
-            openPage: path.resolve(__dirname, 'dist'),
+            contentBase: path.resolve(__dirname, '../dist'),
+            openPage: path.resolve(__dirname, '../dist'),
             watchContentBase: true
         }
     };

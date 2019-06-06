@@ -2,11 +2,11 @@
   "name": "webpack_template",
   "version": "1.0.0",
   "description": "webpack template",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "build": "webpack --progress --env production",
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server"
+    "build": "webpack --config config/webpack.config.js --progress --env production",
+    "watch": "webpack --config config/webpack.config.js --watch",
+    "start": "webpack-dev-server --config config/webpack.config.js"
   },
   "keywords": [],
   "author": "Nitesh",

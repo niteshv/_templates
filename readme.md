@@ -34,3 +34,15 @@
 
 - favicon.ico
 - src/img/icons/site-icon.png (square icon, will output correct sizes)
+
+## templates
+
+- src/pages-templates
+
+## Pages
+
+- src/pages
+
+## Content and variables to insert into pages
+
+- src/content

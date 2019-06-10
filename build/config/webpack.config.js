@@ -20,10 +20,11 @@ function generateHtmlPlugins(templateDir) {
         // Split names
         const parts = item.split('.')
         const name = parts[0]
+
         // Create new HtmlWebPackPlugin with options
         return new HtmlWebPackPlugin({
-            filename: `${name}.html`,
-            template: path.resolve(__dirname, `${templateDir}/${name}.pug`)
+            template: path.resolve(__dirname, `${templateDir}/${name}.pug`),
+            filename: `${name}.html`
         })
     })
 }

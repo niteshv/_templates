@@ -18,7 +18,7 @@ nav.init();
 
 // Sticky Header
 import stickybits from 'stickybits';
-var stickybit = stickybits('#header', { useStickyClasses: true });
+const stickybit = stickybits('#header', { useStickyClasses: true });
 
 // Carousels
 import CarouselStart from './components/carousel/carousel';

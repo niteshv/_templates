@@ -4,12 +4,19 @@ block content
     doctype html
     html(class='no-js' lang='en')
         head
+            meta(charset='utf-8')
+            meta(name='viewport',content='width=device-width, initial-scale=1')
+            link(rel='manifest' href='site.webmanifest')
+
             block headTitle
-            title #{home.pageTitle} - #{common.pageTitle}
+                title #{home.pageTitle} - #{common.pageTitle}
+                meta(name='description', content='')
+
         body
             include ../components/header/header
+            
             #main
 
-            block body
+                block body
 
             include ../components/footer/footer

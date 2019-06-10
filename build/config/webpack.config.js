@@ -195,8 +195,8 @@ module.exports = (env) => {
                 ]
             })
         ]
-            // Generate html pages
-            .concat(htmlPlugins),
+        // Generate html pages
+        .concat(htmlPlugins),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

@@ -15,12 +15,11 @@ const setup = require('./setup.config');
 // Loop through pages folder and build pug templates to html pages
 function generateHtmlPlugins(templateDir) {
     // Read files in template directory
-    const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+    const templateFiles = walkDir(templateDir);
     return templateFiles.map(item => {
-        // Split names and extension
+        // Split names
         const parts = item.split('.')
         const name = parts[0]
-        const extension = parts[1]
         // Create new HtmlWebPackPlugin with options
         return new HtmlWebPackPlugin({
             filename: `${name}.html`,
@@ -29,6 +28,45 @@ function generateHtmlPlugins(templateDir) {
     })
 }
 const htmlPlugins = generateHtmlPlugins(setup.pages.pagesSrc);
+
+// Function to walk through files and directories at a given path
+function walkDir(rootDir) {
+    const paths = [];
+    // A recursive function
+    // - If a path is a file it will add to an array to be returned
+    // - If a path is a directory it will call itself on the directory
+    function walk(directory, parent) {
+        const dirPath = path.resolve(__dirname, directory);
+        const templateFiles = fs.readdirSync(dirPath);
+        // Check each path found, add files to array and call self on directories found
+        templateFiles.forEach(file => {
+            const filepath = path.resolve(__dirname, directory, file);
+            const isDirectory = fs.lstatSync(filepath).isDirectory();
+            if (isDirectory) {
+                // File is a directory
+                const subDirectory = path.join(directory, file);
+                if (parent) {
+                    // Join parent/file before passing so we have correct path
+                    const parentPath = path.join(parent, file);
+                    walk(subDirectory, parentPath);
+                } else {
+                    walk(subDirectory, file);
+                }
+            } else {
+                if (parent) {
+                    // Parent exists, join it with file to create the path
+                    const fileWithParent = path.join(parent, file);
+                    paths.push(fileWithParent);
+                } else {
+                    paths.push(file);
+                }
+            }
+        });
+    }
+    // Start our function, it will call itself until there no paths left
+    walk(rootDir);
+    return paths;
+}
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -127,12 +165,12 @@ module.exports = (env) => {
             // Copy files for site root and images \/
             new CopyWebpackPlugin([
                 {
-                    from: path.resolve(__dirname, setup.paths.imagesSrc ),
-                    to: path.resolve(__dirname, setup.paths.imagesDist )
+                    from: path.resolve(__dirname, setup.paths.imagesSrc),
+                    to: path.resolve(__dirname, setup.paths.imagesDist)
                 },
                 {
-                    from: path.resolve(__dirname, setup.paths.rootFilesSrc ),
-                    to: path.resolve(__dirname, setup.paths.rootFilesDist )
+                    from: path.resolve(__dirname, setup.paths.rootFilesSrc),
+                    to: path.resolve(__dirname, setup.paths.rootFilesDist)
                 }
             ]),
             // Compress images
@@ -156,8 +194,8 @@ module.exports = (env) => {
                 ]
             })
         ]
-        // Generate html pages
-        .concat(htmlPlugins),
+            // Generate html pages
+            .concat(htmlPlugins),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

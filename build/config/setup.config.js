@@ -21,9 +21,7 @@ const setup = {
         rootFilesDist: './../dist',
     },
     pages: {
-        pagesSrc: './../src/pages/',
-        pagesDist: './../dist/',
-        page1: 'index',
+        pagesSrc: '../src/pages'
     },
 };
 

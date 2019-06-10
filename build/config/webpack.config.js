@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -6,7 +7,28 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+// Import paths and options  
 const setup = require('./setup.config');
+
+// Generate html pages
+// Loop through pages folder and build pug templates to html pages
+function generateHtmlPlugins(templateDir) {
+    // Read files in template directory
+    const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+    return templateFiles.map(item => {
+        // Split names and extension
+        const parts = item.split('.')
+        const name = parts[0]
+        const extension = parts[1]
+        // Create new HtmlWebPackPlugin with options
+        return new HtmlWebPackPlugin({
+            filename: `${name}.html`,
+            template: path.resolve(__dirname, `${templateDir}/${name}.pug`)
+        })
+    })
+}
+const htmlPlugins = generateHtmlPlugins(setup.pages.pagesSrc);
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -115,13 +137,6 @@ module.exports = (env) => {
             ]),
             // Compress images
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-            // HTML Template file \/
-            new HtmlWebPackPlugin({
-                hash: false,
-                templateParameters: true,
-                template: path.resolve(__dirname, setup.pages.pagesSrc+setup.pages.page1+'.pug'),
-                filename: path.resolve(__dirname, setup.pages.pagesDist+setup.pages.page1+'.html')
-            }),
             // Progressive Web App creation of assets and manifest \/
             new WebpackPwaManifest({
                 name: setup.siteDetails.siteName,
@@ -140,7 +155,9 @@ module.exports = (env) => {
                     }
                 ]
             })
-        ],
+        ]
+        // Generate html pages
+        .concat(htmlPlugins),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

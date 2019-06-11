@@ -18,8 +18,9 @@ const nav = new Navigation();
 nav.init();
 
 // Component - Sticky Header
-import stickybits from 'stickybits';
-const stickybit = stickybits('#header', { useStickyClasses: true });
+import StickyHeader from './components/header/sticky';
+const sticky = new StickyHeader();
+sticky.init();
 
 // Component - Carousels
 import CarouselStart from './components/carousel/carousel';

@@ -1,5 +1,12 @@
 nav.nav {
     display: flex;
+    a {
+        display: block;
+        padding: .5rem;
+        font-size: $nav-item-font-size;
+        color: $primary-color;
+        text-decoration: none;
+    }
 }
 
 // Nav menu button

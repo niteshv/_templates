@@ -2,7 +2,7 @@
 $primary-color: #5755d9;
 $secondary-color: lighten($primary-color, 37.5%);
 
-// Responsive
+// Responsive breakpoints
 $halfcol: 480px;
 $singlecol: 800px;
 $twocol: 1200px;
@@ -12,8 +12,11 @@ $spacer: 2rem;
 $spacer-small: calc(#{$spacer} * .8);
 $spacer-big: calc(#{$spacer} * 1.2);
 
-// Responsive font sizing
+// Responsive sizing
 $responsive-min-screen: $singlecol;
 $responsive-max-screen: 1800px;
 $responsive-min-value: 16px;
 $responsive-max-value: 20px;
+
+// Font sizing
+$nav-item-font-size: 1.1rem;

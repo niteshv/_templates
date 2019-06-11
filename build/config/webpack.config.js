@@ -3,6 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -176,6 +177,8 @@ module.exports = (env) => {
             ]),
             // Compress images
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+            // Compress and export WebP images
+            new ImageminWebpWebpackPlugin(),
             // Progressive Web App creation of assets and manifest \/
             new WebpackPwaManifest({
                 name: setup.siteDetails.siteName,
@@ -195,8 +198,8 @@ module.exports = (env) => {
                 ]
             })
         ]
-        // Generate html pages
-        .concat(htmlPlugins),
+            // Generate html pages
+            .concat(htmlPlugins),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

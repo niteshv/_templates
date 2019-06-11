@@ -46,3 +46,7 @@
 ## Content and variables to insert into pages
 
 - src/content
+
+## NEXT TO DO
+
+- Add some base css

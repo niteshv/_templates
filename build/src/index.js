@@ -7,7 +7,7 @@
 // - CSS - All other custom css
 
 // CSS - Variables
-import '../src/components/variables.scss';
+import './components/variables.scss';
 
 // CSS - normalize.css - import vendor css
 import 'normalize.css/normalize.css';
@@ -30,6 +30,7 @@ for (let carouselEl of carousels) {
 }
 
 // CSS - Import all custom CSS styles - should be after all vendor css
-import '../src/components/header/header.scss';
-import '../src/components/nav/nav.scss';
-import '../src/components/footer/footer.scss';
+import './components/base/typography.scss';
+import './components/header/header.scss';
+import './components/nav/nav.scss';
+import './components/footer/footer.scss';

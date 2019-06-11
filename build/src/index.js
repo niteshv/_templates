@@ -34,3 +34,6 @@ import './components/base/typography.scss';
 import './components/header/header.scss';
 import './components/nav/nav.scss';
 import './components/footer/footer.scss';
+
+// CSS - Print styles
+import './components/base/print.scss';

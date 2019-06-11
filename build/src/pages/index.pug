@@ -3,3 +3,7 @@ extends ../pages-template/layout.pug
 block body
     h1 #{common.pageTitle} #{home.pageTitle}
     .col !{home.pageContent}
+    .col
+        each item in list
+            article
+                h2= item.header

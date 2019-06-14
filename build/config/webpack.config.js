@@ -29,7 +29,6 @@ function generateHtmlPlugins(templateDir) {
         })
     })
 }
-const htmlPlugins = generateHtmlPlugins(setup.pages.pagesSrc);
 
 // Function to walk through files and directories at a given path
 function walkDir(rootDir) {
@@ -69,6 +68,7 @@ function walkDir(rootDir) {
     walk(rootDir);
     return paths;
 }
+const htmlPlugins = generateHtmlPlugins(setup.pages.pagesSrc);
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -179,27 +179,29 @@ module.exports = (env) => {
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
             // Compress and export WebP images
             new ImageminWebpWebpackPlugin(),
-            // Progressive Web App creation of assets and manifest \/
-            new WebpackPwaManifest({
-                name: setup.siteDetails.siteName,
-                short_name: setup.siteDetails.siteNameShort,
-                description: setup.siteDetails.siteDescription,
-                background_color: setup.siteDetails.siteBackgroundColor,
-                theme_color: setup.siteDetails.siteThemeColor,
-                crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-                includeDirectory: false,
-                fingerprints: false,
-                publicPath: '/',
-                icons: [
-                    {
-                        src: path.resolve(setup.siteDetails.siteIconSrc),
-                        sizes: [192, 512]
-                    }
-                ]
-            })
         ]
             // Generate html pages
-            .concat(htmlPlugins),
+            .concat(htmlPlugins)
+            // Progressive Web App creation of assets and manifest \/
+            .concat([
+                new WebpackPwaManifest({
+                    name: setup.siteDetails.siteName,
+                    short_name: setup.siteDetails.siteNameShort,
+                    description: setup.siteDetails.siteDescription,
+                    background_color: setup.siteDetails.siteBackgroundColor,
+                    theme_color: setup.siteDetails.siteThemeColor,
+                    crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+                    includeDirectory: false,
+                    fingerprints: false,
+                    publicPath: '/',
+                    icons: [
+                        {
+                            src: path.resolve(setup.siteDetails.siteIconSrc),
+                            sizes: [192, 512]
+                        }
+                    ]
+                })
+            ]),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

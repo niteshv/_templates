@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -80,6 +80,7 @@ module.exports = (env) => {
             path: path.resolve(__dirname, setup.paths.dist),
             filename: setup.paths.fileName
         },
+        stats: 'minimal',
         module: {
             rules: [
                 {
@@ -157,12 +158,13 @@ module.exports = (env) => {
         plugins: [
             // Delete all files in dist \/
             new CleanWebpackPlugin(),
+            new StylelintBarePlugin({
+                configFile: path.resolve(__dirname, './../config/stylelint.config.js'),
+                files: path.resolve(__dirname, './../src/components/**/*.scss')
+            }),
             // Css file for site \/
             new MiniCssExtractPlugin({
                 filename: "assets/[name].css"
-            }),
-            new StyleLintPlugin({
-                configFile: path.resolve(__dirname, './../config/stylelint.config.js')
             }),
             // Copy files for site root and images \/
             new CopyWebpackPlugin([

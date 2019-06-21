@@ -27,7 +27,7 @@ import Navigation from './components/nav/nav';
 const nav = new Navigation();
 nav.init();
 
-// Component - Sticky Header
+// Component - Sticky Header - Adds js-is-sticky class on scroll
 import StickyHeader from './components/header/sticky';
 const sticky = new StickyHeader();
 sticky.init();

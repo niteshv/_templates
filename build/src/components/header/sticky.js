@@ -3,8 +3,8 @@ import _ from 'lodash';
 class StickyHeader {
     constructor() {
         this.scrollpos = window.scrollY;
-        this.header = document.querySelector("header#header");
-        this.footer = document.querySelector("footer#footer");
+        this.header = document.getElementById("header");
+        this.footer = document.getElementById("footer");
     }
     init() {
         window.onscroll = _.throttle(() => {

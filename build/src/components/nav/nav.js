@@ -1,11 +1,11 @@
 class Nav {
     constructor(container) {
-        this.container = document.getElementById('nav-primary');
+        this.body = document.getElementById("body");
         this.button = document.getElementById('nav-button');
     }
     init() {
         this.button.addEventListener('click', evt => {
-            this.container.classList.toggle('active');
+            this.body.classList.toggle("js-nav-open");
         });
     }
 }

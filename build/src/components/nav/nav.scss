@@ -1,5 +1,10 @@
 nav.nav {
     display: flex;
+
+    @media(max-width:$singlecol) {
+        display: none;
+    }
+
     a {
         display: block;
         padding: .5rem;
@@ -7,9 +12,46 @@ nav.nav {
         color: $color-primary;
         text-decoration: none;
     }
+
+    body.js-nav-open & {
+        display: block;
+    }
 }
+
 
 // Nav menu button
 #nav-button {
-    display: inline-block;
+    display: none;
+    width: 40px;
+    transform: scale(.8);
+
+    &:after,
+    &:before,
+    span {
+        background-color: $color-primary;
+        content: '';
+        display: block;
+        height: 5px;
+        margin: 7px 0;
+        transition: all .2s ease-in-out;
+    }
+
+    body.js-nav-open & {
+
+        &:before {
+            transform: translateY(12px) rotate(135deg);
+        }
+
+        &:after {
+            transform: translateY(-12px) rotate(-135deg);
+        }
+
+        span {
+            transform: scale(0);
+        }
+    }
+
+    @media (max-width: $singlecol) {
+        display: inline-block;
+    }
 }

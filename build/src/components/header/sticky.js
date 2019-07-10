@@ -4,22 +4,20 @@ class StickyHeader {
     constructor() {
         this.scrollpos = window.scrollY;
         this.header = document.getElementById("header");
-        this.footer = document.getElementById("footer");
+        this.body = document.getElementById("body");
     }
     init() {
         window.onscroll = _.throttle(() => {
             this.scrollpos = window.scrollY;
             if (this.scrollpos >= this.header.offsetHeight) {
                 // add class
-                this.header.classList.add("js-is-sticky");
-                this.footer.classList.add("js-is-sticky");
+                this.body.classList.add("js-header-sticky");
             }
             else {
                 // remove class
-                this.header.classList.remove("js-is-sticky");
-                this.footer.classList.remove("js-is-sticky");
+                this.body.classList.remove("js-header-sticky");
             }
-        }, 100);
+        }, 50);
     }
 }
 export default StickyHeader;

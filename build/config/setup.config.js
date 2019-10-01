@@ -17,6 +17,8 @@ const setup = {
         cssVariables: '@import "./../src/components/variables";',
         imagesSrc: './../src/img',
         imagesDist: './../dist/assets/img',
+        fontsFolder: '../assets/fonts',
+        fontsDist: './../public/assets/fonts',
         rootFilesSrc: './../src/rootfiles',
         rootFilesDist: './../dist',
     },

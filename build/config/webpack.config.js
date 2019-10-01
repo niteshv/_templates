@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+var webpack = require('webpack');
 
 // Import paths and options  
 const setup = require('./setup.config');
@@ -86,7 +87,10 @@ module.exports = (env) => {
                 {
                     loader: 'babel-loader',
                     test: /\.js$/,
-                    exclude: /node_modules/
+                    exclude: /node_modules/,
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 },
                 {
                     test: /\.s?css$/,
@@ -115,10 +119,12 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
-                                data: setup.paths.cssVariables,
-                                includePaths: [
-                                    path.join(__dirname, setup.paths.src)
-                                ]
+                                prependData: setup.paths.cssVariables,
+                                sassOptions: {
+                                    includePaths: [
+                                        path.join(__dirname, setup.paths.src)
+                                    ]
+                                }
                             }
                         }
                     ]
@@ -132,6 +138,16 @@ module.exports = (env) => {
                         },
                     },
                 },
+                {
+                    test: /\.(woff|woff2)$/,
+                    use: {
+                        loader: "file-loader",
+                        options: {
+                            outputPath: setup.paths.fontsDist,
+                            publicPath: setup.paths.fontsFolder
+                        },
+                    },
+                },                
                 {
                     test: /\.svg$/,
                     use: "file-loader",

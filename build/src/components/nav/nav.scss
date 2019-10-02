@@ -1,8 +1,8 @@
 nav.nav {
-    display: flex;
+    display: none;
 
-    @media(max-width:$singlecol) {
-        display: none;
+    @media(min-width:$singlecol) {
+        display: flex;
     }
 
     a {

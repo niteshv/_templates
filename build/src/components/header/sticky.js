@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-class StickyHeader {
+export default class {
     constructor() {
         this.scrollpos = window.scrollY;
         this.header = document.getElementById("header");
@@ -20,4 +20,3 @@ class StickyHeader {
         }, 50);
     }
 }
-export default StickyHeader;

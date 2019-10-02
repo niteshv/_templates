@@ -3,7 +3,7 @@
 // - CSS - Variables
 // - CSS - Normalize.css
 // - JS - Add js class to html
-// - Component - Navigation menu button
+// - Component - Toggle class button
 // - Component - Sticky Header
 // - Component - Carousels
 // - JS - Smooth scroll
@@ -22,23 +22,18 @@ import 'normalize.css/normalize.css';
 // JS - Add js class to html
 document.querySelector('html.no-js').className = 'js';
 
-// Component - Navigation menu button
-import Navigation from './components/nav/nav';
-const nav = new Navigation();
-nav.init();
+// Component - Toggle class button
+import toggleClass from './components/buttons/toggle';
+const toggleButton = new toggleClass();
+toggleButton.init();
 
-// Component - Sticky Header - Adds js-is-sticky class on scroll
+// Component - Sticky Header
 import StickyHeader from './components/header/sticky';
 const sticky = new StickyHeader();
 sticky.init();
 
 // Component - Carousels
 import CarouselStart from './components/carousel/carousel';
-const carousels = document.querySelectorAll('[data-carousel]');
-for (let carouselEl of carousels) {
-  const carousel = new CarouselStart(carouselEl);
-  carousel.init();
-}
 
 // JS - Smooth scroll
 import SmoothScroll from 'smooth-scroll';
@@ -53,7 +48,9 @@ var scroll = new SmoothScroll('a[href*="#"]', {
 
 // JS - Load images
 import LazyLoad from "vanilla-lazyload";
-const lazyLoadOptions = {use_native: true};
+const lazyLoadOptions = {
+    use_native: true
+};
 const pageLazyLoad = new LazyLoad();
 
 // CSS - Import all custom CSS style

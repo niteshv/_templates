@@ -121,7 +121,7 @@ module.exports = (env) => {
             new CleanWebpackPlugin(),
             new StylelintBarePlugin({
                 configFile: path.resolve(__dirname, './../config/stylelint.config.js'),
-                files: path.resolve(__dirname, './../src/components/**/*.scss')
+                files: 'src/components/**/*.scss'
             }),
             // Css file for site \/
             new MiniCssExtractPlugin({

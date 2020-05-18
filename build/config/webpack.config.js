@@ -3,8 +3,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -92,7 +91,7 @@ module.exports = (env) => {
                             publicPath: setup.paths.fontsFolder
                         },
                     },
-                },                
+                },
                 {
                     test: /\.svg$/,
                     use: "file-loader",
@@ -128,20 +127,20 @@ module.exports = (env) => {
                 filename: "assets/[name].css"
             }),
             // Copy files for site root and images \/
-            new CopyWebpackPlugin([
-                {
-                    from: path.resolve(__dirname, setup.paths.imagesSrc),
-                    to: path.resolve(__dirname, setup.paths.imagesDist)
-                },
-                {
-                    from: path.resolve(__dirname, setup.paths.rootFilesSrc),
-                    to: path.resolve(__dirname, setup.paths.rootFilesDist)
-                }
-            ]),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, setup.paths.imagesSrc),
+                        to: path.resolve(__dirname, setup.paths.imagesDist)
+                    },
+                    {
+                        from: path.resolve(__dirname, setup.paths.rootFilesSrc),
+                        to: path.resolve(__dirname, setup.paths.rootFilesDist)
+                    }
+                ]
+            }),
             // Compress images
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-            // Compress and export WebP images
-            new ImageminWebpWebpackPlugin(),
         ]
             // Generate html pages
             .concat(htmlPlugins)

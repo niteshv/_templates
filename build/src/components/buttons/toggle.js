@@ -20,6 +20,7 @@ export default class {
         this.body.classList.remove("js-overlay-open");
     }
     init() {
+        this.buttons = Array.prototype.slice.call(this.buttons);
         this.buttons.forEach((button) => {
             const dataClass = button.getAttribute('data-class');
             const target = button.getAttribute('data-class-target');

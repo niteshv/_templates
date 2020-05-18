@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import throttle from 'lodash/throttle';
 
 export default class {
     constructor() {
@@ -6,17 +6,18 @@ export default class {
         this.header = document.getElementById("header");
         this.body = document.getElementById("body");
     }
+    manageClasses() {
+        this.scrollpos = window.scrollY;
+        if (this.scrollpos >= (this.header.offsetHeight)) {
+            this.body.classList.add("js-header-sticky");
+        }
+        else {
+            this.body.classList.remove("js-header-sticky");
+        }
+    }
     init() {
-        window.onscroll = _.throttle(() => {
-            this.scrollpos = window.scrollY;
-            if (this.scrollpos >= this.header.offsetHeight) {
-                // add class
-                this.body.classList.add("js-header-sticky");
-            }
-            else {
-                // remove class
-                this.body.classList.remove("js-header-sticky");
-            }
+        window.onscroll = throttle(() => {
+            this.manageClasses();
         }, 50);
     }
 }

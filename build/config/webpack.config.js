@@ -5,7 +5,6 @@ const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var webpack = require('webpack');
 
@@ -143,27 +142,7 @@ module.exports = (env) => {
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         ]
             // Generate html pages
-            .concat(htmlPlugins)
-            // Progressive Web App creation of assets and manifest \/
-            .concat([
-                new WebpackPwaManifest({
-                    name: setup.siteDetails.siteName,
-                    short_name: setup.siteDetails.siteNameShort,
-                    description: setup.siteDetails.siteDescription,
-                    background_color: setup.siteDetails.siteBackgroundColor,
-                    theme_color: setup.siteDetails.siteThemeColor,
-                    crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-                    includeDirectory: false,
-                    fingerprints: false,
-                    publicPath: '/',
-                    icons: [
-                        {
-                            src: path.resolve(setup.siteDetails.siteIconSrc),
-                            sizes: [192, 512]
-                        }
-                    ]
-                })
-            ]),
+            .concat(htmlPlugins),
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.resolve(__dirname, setup.paths.dist),

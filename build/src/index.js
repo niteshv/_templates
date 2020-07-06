@@ -1,6 +1,5 @@
 //// INDEX
 //
-// - CSS - Variables
 // - CSS - Normalize.css
 // - JS - Add js class to html
 // - Component - Toggle class button
@@ -11,10 +10,6 @@
 // - CSS - All other custom css
 // - CSS - IE Fixes
 // - CSS - Print styles
-
-
-// CSS - Variables
-import './components/variables.scss';
 
 // CSS - normalize.css - import vendor css
 import 'normalize.css/normalize.css';

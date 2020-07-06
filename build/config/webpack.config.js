@@ -62,7 +62,7 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
-                                prependData: setup.paths.cssVariables,
+                                additionalData: setup.paths.cssVariables,
                                 sassOptions: {
                                     includePaths: [
                                         path.join(__dirname, setup.paths.src)

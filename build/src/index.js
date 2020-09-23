@@ -5,8 +5,6 @@
 // - Component - Toggle class button
 // - Component - Sticky Header
 // - Component - Carousels
-// - JS - Smooth scroll
-// - JS - Load images
 // - CSS - All other custom css
 // - CSS - IE Fixes
 // - CSS - Print styles
@@ -29,24 +27,6 @@ sticky.init();
 
 // Component - Carousels
 import CarouselStart from './components/carousel/carousel';
-
-// JS - Smooth scroll
-import SmoothScroll from 'smooth-scroll';
-var scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 400,
-    easing: 'easeOutQuad',
-    offset: function (anchor, toggle) {
-        const headerHeight = document.getElementById('header').getBoundingClientRect().height;
-        return headerHeight;
-    }
-});
-
-// JS - Load images
-import LazyLoad from "vanilla-lazyload";
-const lazyLoadOptions = {
-    use_native: true
-};
-const pageLazyLoad = new LazyLoad();
 
 // CSS - Import all custom CSS style
 import './components/base/typography.scss';

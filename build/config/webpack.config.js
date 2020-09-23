@@ -54,9 +54,10 @@ module.exports = (env) => {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                config: { path: './config/postcss.config.js' },
-                                sourceMap: true
-                            }
+                                postcssOptions: {
+                                    config: path.resolve(__dirname, './postcss.config.js'),
+                                },
+                            },
                         },
                         {
                             loader: 'sass-loader',

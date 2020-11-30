@@ -36,13 +36,10 @@ module.exports = (env) => {
                     }
                 },
                 {
-                    test: /\.s?css$/,
+                    test: /\.(sa|sc|c)ss$/,
                     use: [
                         {
-                            loader: MiniCssExtractPlugin.loader,
-                            options: {
-                                hmr: process.env.NODE_ENV === 'development',
-                            },
+                            loader: MiniCssExtractPlugin.loader
                         },
 
                         {
@@ -99,9 +96,6 @@ module.exports = (env) => {
                 {
                     test: /\.pug$/,
                     loader: 'pug-loader',
-                    query: {
-                        pretty: true
-                    }
                 },
                 {
                     test: /\.(html)$/,

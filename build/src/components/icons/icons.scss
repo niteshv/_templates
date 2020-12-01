@@ -1,0 +1,15 @@
+.icon {
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+
+	&-mail {
+		background-image: url('icon-mail.svg');
+	}
+	&-phone {
+		background-image: url('icon-phone.svg');
+	}
+}

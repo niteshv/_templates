@@ -1,57 +1,55 @@
 nav.nav {
-    display: none;
+	display: none;
 
-    @media(min-width:$singlecol) {
-        display: flex;
-    }
+	@media (min-width: $singlecol) {
+		display: flex;
+	}
 
-    a {
-        display: block;
-        padding: .5rem;
-        font-size: $nav-item-font-size;
-        color: $color-primary;
-        text-decoration: none;
-    }
+	a {
+		display: block;
+		padding: 0.5rem;
+		font-size: $nav-item-font-size;
+		color: $color-primary;
+		text-decoration: none;
+	}
 
-    body.js-nav-open & {
-        display: block;
-    }
+	body.js-nav-open & {
+		display: block;
+	}
 }
-
 
 // Nav menu button
 #nav-button {
-    display: none;
-    width: 40px;
-    transform: scale(.8);
+	display: none;
+	width: 40px;
+	transform: scale(0.8);
 
-    &:after,
-    &:before,
-    span {
-        background-color: $color-primary;
-        content: '';
-        display: block;
-        height: 5px;
-        margin: 7px 0;
-        transition: all .2s ease-in-out;
-    }
+	&:after,
+	&:before,
+	span {
+		background-color: $color-primary;
+		content: "";
+		display: block;
+		height: 5px;
+		margin: 7px 0;
+		transition: all 0.2s ease-in-out;
+	}
 
-    body.js-nav-open & {
+	body.js-nav-open & {
+		&:before {
+			transform: translateY(12px) rotate(135deg);
+		}
 
-        &:before {
-            transform: translateY(12px) rotate(135deg);
-        }
+		&:after {
+			transform: translateY(-12px) rotate(-135deg);
+		}
 
-        &:after {
-            transform: translateY(-12px) rotate(-135deg);
-        }
+		span {
+			transform: scale(0);
+		}
+	}
 
-        span {
-            transform: scale(0);
-        }
-    }
-
-    @media (max-width: $singlecol) {
-        display: inline-block;
-    }
+	@media (max-width: $singlecol) {
+		display: inline-block;
+	}
 }

@@ -1,22 +1,33 @@
 // Core colors
-$color-primary: #5755d9;
+
+$color-blue: #5755d9;
+$color-red: #e01212;
+$color-green: #14a324;
+
+$color-primary: $color-blue;
 $color-secondary: lighten($color-primary, 37.5%);
+$color-error: $color-red;
+$color-success: $color-green;
 
 // Responsive breakpoints
 $halfcol: 480px;
 $singlecol: 800px;
 $twocol: 1200px;
+$threecol: 1800px;
 
 // Unit sizes
 $spacer: 2rem;
-$spacer-small: calc(#{$spacer} * .8);
+$spacer-small: calc(#{$spacer} * 0.8);
 $spacer-big: calc(#{$spacer} * 1.2);
 
 // Responsive sizing
 $responsive-min-screen: $singlecol;
-$responsive-max-screen: 1800px;
+$responsive-max-screen: $threecol;
 $responsive-min-value: 16px;
 $responsive-max-value: 20px;
+
+// Fonts
+$font-body: "Roboto", sans-serif;
 
 // Font sizing
 $nav-item-font-size: 1.1rem;

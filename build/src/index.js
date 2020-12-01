@@ -30,6 +30,7 @@ import CarouselStart from './components/carousel/carousel';
 
 // CSS - Import all custom CSS style
 import './components/base/typography.scss';
+import './components/icons/icons.scss';
 import './components/mixins/scrollbars.scss';
 import './components/header/header.scss';
 import './components/nav/nav.scss';

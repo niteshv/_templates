@@ -1,41 +1,38 @@
 // Toggle class based on data attributes
-// data-class="" = Class name
-// data-class-target="" = ID of target
+
+// data-toggle-class="" = Class to apply
+// data-toggle-target="" = ID of target
+// data-toggle-target="parent" = target parent of button
+// data-toggle-remove = classe to remove
 
 export default class {
-    constructor() {
-        this.buttons = document.querySelectorAll('[data-class]');
-        this.body = document.getElementById("body");
-    }
-    closeHeaderOverlays() {
-        // // Nav
-        this.body.classList.remove("js-nav-open");
-        // Search
-        this.body.classList.remove("js-search-open");
-        // Overlays
-        const openOverlay = document.querySelector(".actions button.open.js-active");
-        if (openOverlay) {
-            openOverlay.classList.remove("js-active");
-        }
-        this.body.classList.remove("js-overlay-open");
-    }
-    init() {
-        this.buttons = Array.prototype.slice.call(this.buttons);
-        this.buttons.forEach((button) => {
-            const dataClass = button.getAttribute('data-class');
-            const target = button.getAttribute('data-class-target');
-            const targetClass = document.getElementById(target);
-            const removeOthers = button.hasAttribute('data-class-closeall');
-            button.addEventListener('click', () => {
-                if (this.body.classList.contains(dataClass)) {
-                    targetClass.classList.remove(dataClass);
-                } else {
-                    if (removeOthers) {
-                        this.closeHeaderOverlays();
-                    }
-                    targetClass.classList.add(dataClass);
-                }
-            });
-        });
-    }
+	constructor() {
+		this.buttons = document.querySelectorAll('[data-toggle-class]');
+		this.body = document.getElementById("body");
+	}
+	init() {
+		this.buttons = Array.prototype.slice.call(this.buttons);
+
+		this.buttons.forEach((button) => {
+			const dataClass = button.getAttribute('data-toggle-class');
+			const target = button.getAttribute('data-toggle-target');
+			let targetID = document.getElementById(target);
+			const removeClass = button.getAttribute('data-toggle-remove');
+
+			button.addEventListener('click', () => {
+				if (target === "parent") {
+					targetID = button.parentElement;
+				}
+				if (targetID.classList.contains(dataClass)) {
+					targetID.classList.remove(dataClass);
+				} else {
+					targetID.classList.add(dataClass);
+				}
+				if (removeClass) {
+					targetID.classList.remove(removeClass);
+				}
+			});
+
+		});
+	}
 }

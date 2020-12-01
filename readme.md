@@ -2,7 +2,7 @@
 
 ## Technology
 
-- Webpack 4
+- Webpack 5
 - Scss
 - Pug
 

@@ -1,7 +1,7 @@
 {
 	"name": "webpack_template",
 	"version": "3.0.0",
-	"description": "",
+	"description": "Webpack template base",
 	"main": "index.js",
 	"author": "Nitesh",
 	"license": "ISC",
@@ -20,7 +20,7 @@
 		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "^3.0.0",
 		"copy-webpack-plugin": "^6.3.2",
-		"cross-env": "^7.0.2",
+		"cross-env": "^7.0.3",
 		"css-loader": "^5.0.1",
 		"css-minimizer-webpack-plugin": "^1.1.5",
 		"html-loader": "^1.3.2",

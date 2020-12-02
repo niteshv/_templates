@@ -11,6 +11,11 @@ nav.nav {
 		font-size: $nav-item-font-size;
 		color: $color-primary;
 		text-decoration: none;
+		transition: font-size 0.3s;
+
+		body.js-header-sticky & {
+			font-size: ($nav-item-font-size * 0.9);
+		}
 	}
 
 	body.js-nav-open & {

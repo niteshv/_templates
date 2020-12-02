@@ -4,9 +4,9 @@ header#header {
 	background: rgb(194, 194, 194);
 	color: $color-primary;
 	display: flex;
+	position: sticky;
+	top: 0;
 
 	body.js-header-sticky & {
-		position: sticky;
-		top: 0;
 	}
 }

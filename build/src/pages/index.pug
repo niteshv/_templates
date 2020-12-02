@@ -8,7 +8,7 @@ block headTitle
 	meta(property='og:image' content=`${home.openGraphImage}`)
 
 block body
-	h1 #{common.pageTitle} #{home.pageTitle}
+	h1 #{home.pageTitle}
 	.col !{home.pageContent}
 	.col
 		each item in list

@@ -5,7 +5,7 @@
 // data-toggle-target="parent" = target parent of button
 // data-toggle-remove = classe to remove
 
-export default class {
+export default class toggleClass {
 	constructor() {
 		this.buttons = document.querySelectorAll('[data-toggle-class]');
 		this.body = document.getElementById("body");

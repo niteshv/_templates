@@ -1,6 +1,5 @@
-import throttle from 'lodash/throttle';
 
-export default class {
+export default class stickyHeader {
 	constructor() {
 		this.scrollpos = window.scrollY;
 		this.header = document.getElementById("header");
@@ -16,8 +15,6 @@ export default class {
 		}
 	}
 	init() {
-		window.onscroll = throttle(() => {
-			this.manageClasses();
-		}, 50);
+		this.manageClasses();
 	}
 }

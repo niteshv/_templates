@@ -21,14 +21,22 @@ const toggleButton = new toggleClass();
 toggleButton.init();
 
 // Component - Sticky Header
-import StickyHeader from './components/header/sticky';
-const sticky = new StickyHeader();
+import stickyHeader from './components/header/sticky';
+const sticky = new stickyHeader();
 sticky.init();
 
 // Component - Carousels
 import CarouselStart from './components/carousel/carousel';
 
+// On scroll 
+import throttle from 'lodash/throttle';
+window.onscroll = throttle(() => {
+	// Sticky header
+	sticky.manageClasses();
+}, 50);
+
 // CSS - Import all custom CSS style
+import './components/base/defaults.scss';
 import './components/base/typography.scss';
 import './components/icons/icons.scss';
 import './components/mixins/scrollbars.scss';

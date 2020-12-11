@@ -136,6 +136,7 @@ module.exports = {
 				loader: 'pug-loader',
 				options: {
 					pretty: true,
+					self: true,
 				}
 			},
 		],
@@ -156,7 +157,8 @@ function generateHtmlPlugins(templateDir) {
 		// Create new HtmlWebPackPlugin with options
 		return new HtmlWebPackPlugin({
 			template: path.resolve(__dirname, `${templateDir}/${name}.pug`),
-			filename: `${name}.html`
+			filename: `${name}.html`,
+			DATA: require(`../src/content/content.json`)
 		})
 	})
 }

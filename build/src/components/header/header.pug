@@ -1,4 +1,6 @@
-header.header#header
-	div Logo
-	include ../nav/nav
-	span.icon.icon-mail
+mixin header()
+	header.header#header
+		div Logo
+		include ../nav/nav
+		+nav()
+		span.icon.icon-mail

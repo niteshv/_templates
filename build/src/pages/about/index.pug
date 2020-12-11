@@ -1,13 +1,14 @@
 extends ../../pages-template/layout.pug
 
 block headTitle
-	title #{about.pageTitle}
-	meta(name='description' content=`${about.metaDescription}`)
-	meta(property='og:title' content=`${about.openGraphTitle}`)
-	meta(property='og:description' content=`${about.openGraphDescription}`)
-	meta(property='og:image' content=`${about.openGraphImage}`)
+	title #{data.about.pageTitle}
+	meta(name='description' content=`${data.about.metaDescription}`)
+	meta(property='og:title' content=`${data.about.openGraphTitle}`)
+	meta(property='og:description' content=`${data.about.openGraphDescription}`)
+	meta(property='og:image' content=`${data.about.openGraphImage}`)
 
 block body
-	h1= about.pageTitle
-	.col !{about.pageContent}
+	h1= data.about.pageTitle
+	.col !{data.about.pageContent}
 	include ../../components/carousel/carousel
+	+carousel('about')

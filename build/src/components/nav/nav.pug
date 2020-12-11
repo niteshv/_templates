@@ -1,5 +1,6 @@
-button#nav-button(data-toggle-class="js-nav-open" data-toggle-target="body")
-	span
-nav.nav#nav-primary
-	a(href="/") Home
-	a(href="/about") About
+mixin nav()
+	button#nav-button(data-toggle-class="js-nav-open" data-toggle-target="body")
+		span
+	nav.nav#nav-primary
+		each item in data.navlinks
+			a(href=item.navLink)= item.navName

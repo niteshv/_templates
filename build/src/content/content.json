@@ -1,0 +1,74 @@
+{
+	"common": {
+		"pageTitle": "Company Name",
+		"metaDescription": "metaDescription"
+	},
+	"navlinks": [
+		{
+			"navName": "Home",
+			"navLink": "/"
+		},
+		{
+			"navName": "About",
+			"navLink": "/about"
+		}
+	],
+	"footerlinks": [
+		{
+			"navName": "Home",
+			"navLink": "/"
+		},
+		{
+			"navName": "About",
+			"navLink": "/about"
+		}
+	],
+	"home": {
+		"pageTitle": "Home - Company",
+		"metaDescription": "Home description",
+		"pageContent": "<p>Home page content to go here</p>",
+		"openGraphTitle": "OG Title",
+		"openGraphDescription": "OG Description",
+		"openGraphImage": "/assets/img/img.jpg"
+	},
+	"homeCarousel": [
+		{
+			"carouselText": "Home Slide 1",
+			"carouselText2": "Home2 Slide 1"
+		},
+		{
+			"carouselText": "Home Slide 2",
+			"carouselText2": "Home2 Slide 2"
+		}
+	],
+	"about": {
+		"pageTitle": "About - Company",
+		"metaDescription": "Home description",
+		"pageContent": "<p>Home page content to go here</p>",
+		"openGraphTitle": "OG Title",
+		"openGraphDescription": "OG Description",
+		"openGraphImage": "/assets/img/img.jpg"
+	},
+	"aboutCarousel": [
+		{
+			"carouselText": "about Slide 1",
+			"carouselText2": "about2 Slide 1"
+		},
+		{
+			"carouselText": "about Slide 2",
+			"carouselText2": "about2 Slide 2"
+		}
+	],
+	"list": [
+		{
+			"header": "item heading",
+			"image": "imagename",
+			"link": "linkurl"
+		},
+		{
+			"header": "item heading 2",
+			"image": "imagename2",
+			"link": "linkurl2"
+		}
+	]
+}

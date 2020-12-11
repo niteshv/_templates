@@ -1,17 +1,19 @@
 extends ../pages-template/layout.pug
 
 block headTitle
-	title #{home.pageTitle}
-	meta(name='description' content=`${home.metaDescription}`)
-	meta(property='og:title' content=`${home.openGraphTitle}`)
-	meta(property='og:description' content=`${home.openGraphDescription}`)
-	meta(property='og:image' content=`${home.openGraphImage}`)
+	title #{data.home.pageTitle}
+	meta(name='description' content=`${data.home.metaDescription}`)
+	meta(property='og:title' content=`${data.home.openGraphTitle}`)
+	meta(property='og:description' content=`${data.home.openGraphDescription}`)
+	meta(property='og:image' content=`${data.home.openGraphImage}`)
 
 block body
-	h1 #{home.pageTitle}
-	.col !{home.pageContent}
+	h1 #{data.home.pageTitle}
+	include ../components/carousel/carousel
+	+carousel('home')
+	.col !{data.home.pageContent}
 	.col
-		each item in list
+		each item in data.list
 			article
 				h2= item.header
 	img(src="assets/img/placeholder.png" alt="")

@@ -1,4 +1,5 @@
-extends ../content/content.pug
+block variables
+- var data = self.htmlWebpackPlugin.options.DATA
 
 block content
 	doctype html
@@ -7,10 +8,15 @@ block content
 			meta(charset='utf-8')
 			meta(name='viewport' content='width=device-width, initial-scale=1')
 			block headTitle
-				title #{home.pageTitle} - #{common.pageTitle}
-				meta(name='description' content=`${common.metaDescription}`)
+				title #{data.home.pageTitle} - #{data.common.pageTitle}
+				meta(name='description' content=`${data.common.metaDescription}`)
 		body#body
+
 			include ../components/header/header
+			+header()
+
 			#main
 				block body
+				
 			include ../components/footer/footer
+			+footer()

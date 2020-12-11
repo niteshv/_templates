@@ -1,5 +1,13 @@
-section(class="section section-carousel")
-	div(class="wrapper", data-carousel, data-flickity='{"autoPlay":"2000","wrapAround": true, "pauseAutoPlayOnHover": true, "imagesLoaded": true}')
-		article Slide 1
-		article Slide 2
-		article Slide 3
+mixin carousel(place)
+	section(class="section section-carousel")
+		.wrapper(data-carousel, data-flickity='{"autoPlay":"2000","wrapAround": true}')
+			if place === 'home'
+				each item in data.homeCarousel
+					article
+						p= item.carouselText
+						p= item.carouselText2
+			if place === 'about'
+				each item in data.aboutCarousel
+					article
+						p= item.carouselText
+						p= item.carouselText2

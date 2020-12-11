@@ -1,2 +1,6 @@
-footer.footer#footer
-	wrapper &copy; Copyright
+mixin footer()
+	footer.footer#footer
+		.wrapper &copy; Copyright
+		.links
+			each item in data.footerlinks
+				a(href=item.navLink)= item.navName

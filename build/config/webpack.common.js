@@ -100,11 +100,44 @@ module.exports = {
 				],
 			},
 
+			// Images
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
+				exclude: [
+					paths.fontsSrc
+				],
+			},
+
 			// Fonts and SVGs: Inline files
-			{ test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+			{
+				test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+				include: [
+					paths.fontsSrc
+				],
+				type: 'asset/resource',
+				generator: {
+					filename: 'assets/fonts/[name][ext]'
+				},
+			},
+
+			// SVGs: Inline files
+			{
+				test: /\.svg$/,
+				exclude: [
+					paths.fontsSrc
+				],
+				type: 'asset/inline'
+			},
 
 			// Compile pug files
-			{ test: /\.pug$/, loader: 'pug-loader' },
+			{
+				test: /\.pug$/,
+				loader: 'pug-loader',
+				options: {
+					pretty: true,
+				}
+			},
 		],
 	},
 }

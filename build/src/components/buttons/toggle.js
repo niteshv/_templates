@@ -3,6 +3,7 @@
 // data-toggle-class="" = Class to apply
 // data-toggle-target="" = ID of target
 // data-toggle-target="parent" = target parent of button
+// data-toggle-target="parentparent" = target of parent of parent of button
 // data-toggle-remove = classe to remove
 
 export default class toggleClass {
@@ -22,6 +23,9 @@ export default class toggleClass {
 			button.addEventListener('click', () => {
 				if (target === "parent") {
 					targetID = button.parentElement;
+				}
+				if (target === "parentparent") {
+					targetID = button.parentElement.parentElement;
 				}
 				if (targetID.classList.contains(dataClass)) {
 					targetID.classList.remove(dataClass);

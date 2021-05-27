@@ -10,14 +10,14 @@ module.exports = merge(common, {
 	devtool: false,
 	output: {
 		path: paths.build,
+		filename: 'assets/js/[name].js',
 		publicPath: '/',
-		filename: 'js/[name].[contenthash].bundle.js',
 	},
 	plugins: [
 		// Extracts CSS into separate files
 		// Note: style-loader is for development, MiniCssExtractPlugin is for production
 		new MiniCssExtractPlugin({
-			filename: 'styles/[name].css',
+			filename: 'assets/css/[name].css',
 			chunkFilename: '[id].css',
 		}),
 	],

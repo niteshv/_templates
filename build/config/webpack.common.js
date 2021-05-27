@@ -14,12 +14,14 @@ const htmlPlugins = generateHtmlPlugins(paths.pages);
 
 module.exports = {
 	// Where webpack looks to start building the bundle
-	entry: [paths.src + '/index.js'],
-
+	entry: {
+		critical: paths.src + '/critical.js',
+		other: paths.src + '/other.js'
+	},
 	// Where webpack outputs the assets and bundles
 	output: {
 		path: paths.build,
-		filename: 'assets/[name].bundle.js',
+		filename: 'assets/js/[name].js',
 		publicPath: '/',
 	},
 
@@ -42,8 +44,8 @@ module.exports = {
 					to: paths.build
 				},
 				{
-					from: paths.imagesSrc,
-					to: paths.imagesDist
+					from: paths.images.src,
+					to: paths.images.dist
 				},
 				// {
 				//   from: paths.fontsSrc,
@@ -105,7 +107,7 @@ module.exports = {
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
 				exclude: [
-					paths.fontsSrc
+					paths.fonts.src
 				],
 			},
 
@@ -113,7 +115,7 @@ module.exports = {
 			{
 				test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
 				include: [
-					paths.fontsSrc
+					paths.fonts.src
 				],
 				type: 'asset/resource',
 				generator: {
@@ -125,7 +127,7 @@ module.exports = {
 			{
 				test: /\.svg$/,
 				exclude: [
-					paths.fontsSrc
+					paths.fonts.src
 				],
 				type: 'asset/inline'
 			},

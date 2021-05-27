@@ -16,17 +16,24 @@ module.exports = {
 	// Static files that get copied to build folder
 	public: path.resolve(__dirname, '../src/rootfiles'),
 
-	// Images Src
-	imagesSrc: path.resolve(__dirname, '../src/img'),
+	// Assets (src + dist)
+	assets: path.resolve(__dirname, '../dist/assets'),
+	
+	images: {
+		src: path.resolve(__dirname, '../src/img'),
+		dist: path.resolve(__dirname, '../dist/assets/img'),
+	},
 
-	// Images Dist
-	imagesDist: path.resolve(__dirname, '../dist/assets/img'),
+	downloads: {
+		src: path.resolve(__dirname, '../src/downloads'),
+		dist: path.resolve(__dirname, '../dist/assets/downloads'),
+	},
 
-	// Fonts Src
-	fontsSrc: path.resolve(__dirname, '../src/fonts'),
+	fonts: {
+		src: path.resolve(__dirname, '../src/fonts'),
+		dist: path.resolve(__dirname, '../dist/assets/fonts'),
+	},
 
-	// Fonts Dist
-	fontsDist: path.resolve(__dirname, '../dist/assets/fonts'),
 
 	// Pages
 	pages: path.resolve(__dirname, '../src/pages'),

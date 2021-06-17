@@ -135,7 +135,7 @@ module.exports = {
 			// Compile pug files
 			{
 				test: /\.pug$/,
-				loader: 'pug-loader',
+				loader: 'simple-pug-loader',
 				options: {
 					pretty: true,
 					self: true,

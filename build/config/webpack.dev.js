@@ -17,13 +17,7 @@ module.exports = merge(common, {
 		contentBase: paths.build,
 		open: false,
 		hot: true,
-		port: 8080,
-		proxy: [
-			{
-				context: "/",
-				target: "https://localhost:51047/",
-			}
-		]
+		port: 8080
 	},
 
 	plugins: [

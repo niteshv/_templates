@@ -2,9 +2,7 @@ const path = require('path')
 const paths = require('./paths')
 const fs = require('fs');
 
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -52,6 +50,9 @@ module.exports = {
 				//   to: paths.fontsDist
 				// },
 			],
+			options: {
+				concurrency: 100,
+			}
 		}),
 	]
 		// Generate html pages

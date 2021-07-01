@@ -8,6 +8,11 @@ module.exports = merge(common, {
 	// Set the mode to development or production
 	mode: 'development',
 
+	// Set cache
+	cache: {
+		type: 'filesystem',
+	},
+
 	// Control how source maps are generated
 	devtool: 'inline-source-map',
 

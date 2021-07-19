@@ -19,3 +19,14 @@ iframe {
 a {
 	text-decoration: none;
 }
+
+.mobile-only {
+	@media (min-width: $singlecol) {
+		display: none;
+	}
+}
+.desktop-only {
+	@media (max-width: $singlecol) {
+		display: none;
+	}
+}

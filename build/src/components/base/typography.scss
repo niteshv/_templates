@@ -1,7 +1,7 @@
 @import "../mixins/typography.scss";
 
 // Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url($font-import);
 
 html {
 	@include interpolate(
@@ -15,4 +15,33 @@ html {
 
 body {
 	font-family: $font-body;
+}
+
+h1 {
+	font-size: $h1-font-size;
+}
+
+h2 {
+	font-size: $h2-font-size;
+}
+
+h3 {
+	font-size: $h3-font-size;
+}
+
+h4 {
+	font-size: $h4-font-size;
+}
+
+h5 {
+	font-size: $h5-font-size;
+}
+
+h6 {
+	font-size: $h6-font-size;
+}
+
+p,
+li {
+	font-size: $p-font-size;
 }

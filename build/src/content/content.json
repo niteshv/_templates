@@ -1,7 +1,8 @@
 {
 	"common": {
 		"pageTitle": "Company Name",
-		"metaDescription": "metaDescription"
+		"metaDescription": "metaDescription",
+		"copyrightNotice": "&copy; Copyright 2021"
 	},
 	"navlinks": [
 		{
@@ -26,7 +27,7 @@
 	"home": {
 		"pageTitle": "Home - Company",
 		"metaDescription": "Home description",
-		"pageContent": "<p>Home page content to go here</p>",
+		"pageContent": "<p>Home page content</p>",
 		"openGraphTitle": "OG Title",
 		"openGraphDescription": "OG Description",
 		"openGraphImage": "/assets/img/img.jpg"
@@ -51,22 +52,24 @@
 	},
 	"aboutCarousel": [
 		{
-			"carouselText": "about Slide 1",
-			"carouselText2": "about2 Slide 1"
+			"carouselText": "About",
+			"carouselText2": "Slide 1"
 		},
 		{
-			"carouselText": "about Slide 2",
-			"carouselText2": "about2 Slide 2"
+			"carouselText": "About",
+			"carouselText2": "Slide 2"
 		}
 	],
 	"list": [
 		{
-			"header": "item heading",
+			"header": "Item Heading",
+			"intro": "Item Introduction",
 			"image": "imagename",
 			"link": "linkurl"
 		},
 		{
-			"header": "item heading 2",
+			"header": "Item Heading 2",
+			"intro": "Item Introduction 2",
 			"image": "imagename2",
 			"link": "linkurl2"
 		}

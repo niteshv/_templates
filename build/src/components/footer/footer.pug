@@ -1,6 +1,7 @@
 mixin footer()
 	footer.footer#footer
-		.wrapper &copy; Copyright
-		.links
-			each item in data.footerlinks
-				a(href=item.navLink)= item.navName
+		.wrapper
+			.copyright!= data.common.copyrightNotice
+			.links
+				each item in data.footerlinks
+					a(href=item.navLink)= item.navName

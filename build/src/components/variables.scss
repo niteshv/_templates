@@ -1,9 +1,9 @@
-// Core colors
-
+// Core colours
 $color-blue: #5755d9;
 $color-red: #e01212;
 $color-green: #14a324;
 
+// Set colours
 $color-primary: $color-blue;
 $color-secondary: lighten($color-primary, 37.5%);
 $color-error: $color-red;
@@ -27,7 +27,17 @@ $responsive-min-value: 16px;
 $responsive-max-value: 20px;
 
 // Fonts
+$font-import: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap";
 $font-body: "Roboto", sans-serif;
 
 // Font sizing
-$nav-item-font-size: 1.1rem;
+$h1-font-size: 2rem;
+$h2-font-size: 1.5rem;
+$h3-font-size: 1.25rem;
+$h4-font-size: 1rem;
+$h5-font-size: 0.75rem;
+$h6-font-size: 0.75rem;
+
+$p-font-size: 0.75rem;
+
+$nav-item-font-size: 1rem;
